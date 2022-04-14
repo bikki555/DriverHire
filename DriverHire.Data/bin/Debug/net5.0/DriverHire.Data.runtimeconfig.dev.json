@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\BIKKI\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\BIKKI\\.nuget\\packages"
+    ]
+  }
+}
