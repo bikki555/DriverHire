@@ -42,6 +42,10 @@ namespace DriverHire.Repository
         private  IApplicationRoleRepository _applicationRoleRepository;
         public IApplicationRoleRepository ApplicationRoleRepository => _applicationRoleRepository ??= new ApplicationRoleRepository(_context);
 
+        private IBookingRepository _bookingRepository;
+        public IBookingRepository bookingRepository => _bookingRepository ??= new BookingRepository(_context);
+
+
     }
 }
 

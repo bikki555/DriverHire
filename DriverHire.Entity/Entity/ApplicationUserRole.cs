@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DriverHire.Entity.Entity
 {
-    public class ApplicationUserRole:IdentityUserRole<string>
-    {
-    }
+    //public class ApplicationUserRole:IdentityUserRole<string>
+    //{
+    //}
 }

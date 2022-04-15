@@ -12,6 +12,7 @@ namespace DriverHire.Api.Infrastructure
         public static IServiceCollection AddServicesDI(this IServiceCollection services)
         {
             services.AddScoped<IApplicationRoleSevices, ApplicationRoleServices>();
+            services.AddScoped<IBookingServices, BookingServices>();
             return services;
         }
 

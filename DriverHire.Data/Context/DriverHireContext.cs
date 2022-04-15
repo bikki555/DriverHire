@@ -10,7 +10,7 @@ namespace DriverHire.Data.Context
                                                         ApplicationRole,
                                                         string,
                                                         IdentityUserClaim<string>,
-                                                        ApplicationUserRole,
+                                                        IdentityUserRole<string>,
                                                         IdentityUserLogin<string>,
                                                         IdentityRoleClaim<string>,
                                                         IdentityUserToken<string>>
@@ -23,13 +23,14 @@ namespace DriverHire.Data.Context
         {
             base.OnModelCreating(modelBuilder);
             //creating table configurations//
-
+        }
 
             //all table should be defined here test table demo
             #region DbSet
-            //public DbSet<Test> Test { get; set; }
+            
+            public DbSet<Booking> Booking { get; set; }
             #endregion
         }
 
     }
-}
+

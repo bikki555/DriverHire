@@ -43,6 +43,7 @@ namespace DriverHire
             services.AddScoped<IUnitofWork, UnitofWork>();
             //adding services di //
             services.AddServicesDI().AddAuthenticationDI();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
