@@ -9,15 +9,9 @@ namespace DriverHire.Repository
 {
     public interface IUnitofWork
     {
-      
-        //unit of work main //
         public Task BeginTransactionAsync();
         public Task CommitAsync();
         public Task RollbackAsync();
         public Task<int> SaveAsync();
-
-        //IRepositories//
-        public IApplicationRoleRepository ApplicationRoleRepository { get; }
-        public IBookingRepository BookingRepository { get; }
     }
 }

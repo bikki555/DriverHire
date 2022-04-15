@@ -13,20 +13,20 @@ namespace DriverHire.Api.Controllers
 
     public class BookingController : Controller
     {
-        
+
         private readonly IBookingServices _bookingServices;
 
         public BookingController(IBookingServices bookingServices)
         {
             _bookingServices = bookingServices;
         }
-    [HttpPost]
-      public async Task<IActionResult> Save(Booking entity)
-      {
+        [HttpPost]
+        public async Task<IActionResult> Save(Booking entity)
+        {
             var result = await _bookingServices.Save(entity);
             return Ok(result);
 
-            
-      }
+
+        }
     }
 }
