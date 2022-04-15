@@ -19,20 +19,20 @@ namespace DriverHire.Services.Services
     public class BookingServices : IBookingServices
     {
         private readonly IUnitofWork _unitofWork;
-        private IDriverFormRepository entity;
+        private readonly IBookingRepository _bookingRepository;
 
-        public BookingServices(IUnitofWork unitofWork)
+        public BookingServices(IUnitofWork unitofWork,IBookingRepository bookingRepository)
         {
             _unitofWork = unitofWork;
+            _bookingRepository = bookingRepository;
         }
 
         public async Task<Booking> Save(Booking entity)
         {
             //mapping //
-            var result =await _unitofWork.BookingRepository.Insert(entity);
+            var result =(await _bookingRepository.Insert(entity)).Entity;
+            await _unitofWork.SaveAsync();
             return result;
-           
         }
-        
     }
 }

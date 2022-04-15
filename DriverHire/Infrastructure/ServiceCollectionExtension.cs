@@ -1,4 +1,6 @@
-﻿using DriverHire.Services.Services;
+﻿using DriverHire.Repository.Interfaces;
+using DriverHire.Repository.Repository;
+using DriverHire.Services.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,12 @@ namespace DriverHire.Api.Infrastructure
         {
             services.AddScoped<IApplicationRoleSevices, ApplicationRoleServices>();
             services.AddScoped<IBookingServices, BookingServices>();
+            return services;
+        }
+
+        public static IServiceCollection AddRepositorysDI(this IServiceCollection services)
+        {
+            services.AddScoped<IBookingRepository, BookingRepository>();
             return services;
         }
 

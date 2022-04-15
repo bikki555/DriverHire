@@ -19,4 +19,8 @@
     <ProjectReference Include="..\DriverHire.Services\DriverHire.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contents\images\" />
+  </ItemGroup>
+
 </Project>

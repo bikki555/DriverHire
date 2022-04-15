@@ -15,12 +15,10 @@ namespace DriverHire.Repository
     {
 
         private readonly DriverHireContext _context;
-        private readonly IConfiguration _configuration;
         private IDbContextTransaction transaction;
-        public UnitofWork(DriverHireContext context, IConfiguration configuration)
+        public UnitofWork(DriverHireContext context)
         {
             _context = context;
-            _configuration = configuration;
         }
         //unit of work main //
         public async Task<int> SaveAsync()
@@ -38,14 +36,6 @@ namespace DriverHire.Repository
         {
             await transaction?.RollbackAsync();
         }
-        //implementing IunitofWork Repositories//
-        private  IApplicationRoleRepository _applicationRoleRepository;
-        public IApplicationRoleRepository ApplicationRoleRepository => _applicationRoleRepository ??= new ApplicationRoleRepository(_context);
-
-        private IBookingRepository _bookingRepository;
-        public IBookingRepository bookingRepository => _bookingRepository ??= new BookingRepository(_context);
-
-
     }
 }
 
