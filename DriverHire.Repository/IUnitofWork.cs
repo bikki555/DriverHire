@@ -19,5 +19,6 @@ namespace DriverHire.Repository
         //IRepositories//
         public IApplicationRoleRepository ApplicationRoleRepository { get; }
         public IBookingRepository BookingRepository { get; }
+        public IDriverFormRepository DriverFormRepository { get; }
     }
 }

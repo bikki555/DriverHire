@@ -29,6 +29,8 @@ namespace DriverHire.Data.Context
             #region DbSet
             
             public DbSet<Booking> Booking { get; set; }
+
+            public DbSet<DriverForm> DriverForm { get; set; }
             #endregion
         }
 

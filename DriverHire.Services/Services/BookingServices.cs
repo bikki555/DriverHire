@@ -1,5 +1,6 @@
 ﻿using DriverHire.Entity.Entity;
 using DriverHire.Repository;
+using DriverHire.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace DriverHire.Services.Services
     public class BookingServices : IBookingServices
     {
         private readonly IUnitofWork _unitofWork;
+        private IDriverFormRepository entity;
 
         public BookingServices(IUnitofWork unitofWork)
         {
@@ -31,5 +33,6 @@ namespace DriverHire.Services.Services
             return result;
            
         }
+        
     }
 }
