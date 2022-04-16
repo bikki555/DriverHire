@@ -15,6 +15,7 @@ namespace DriverHire.Api.Infrastructure
         {
             services.AddScoped<IApplicationRoleSevices, ApplicationRoleServices>();
             services.AddScoped<IBookingServices, BookingServices>();
+            services.AddScoped<IDriverFormServices, DriverFormServices>();
             return services;
         }
 
