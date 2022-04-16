@@ -25,7 +25,7 @@ namespace DriverHire.Services.Services
             _UserRegistrationRepository = userRegistrationRepository;
         }
 
-        public async Task<IdentityUserServices> Save(IdentityUserServices entity)
+        public async Task<IdentityUser> Save(IdentityUser entity)
         {
             var result = (await _UserRegistrationRepository.Insert(entity)).Entity;
             await _unitofWork.SaveAsync();
