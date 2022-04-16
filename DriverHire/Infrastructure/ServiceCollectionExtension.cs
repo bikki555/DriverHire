@@ -1,5 +1,6 @@
 ﻿using DriverHire.Repository.Interfaces;
 using DriverHire.Repository.Repository;
+using DriverHire.Services;
 using DriverHire.Services.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -13,11 +14,14 @@ namespace DriverHire.Api.Infrastructure
     {
         public static IServiceCollection AddServicesDI(this IServiceCollection services)
         {
-            services.AddScoped<IApplicationRoleSevices, ApplicationRoleServices>();
+            services.AddScoped<IRandomNumberGeneratorServices, RandomNumberGeneratorServices>();
             services.AddScoped<IImageProcessingServices, ImageProcessingServices>();
+            services.AddScoped<IEmailServices, EmailServices>();
+            services.AddScoped<IApplicationRoleSevices, ApplicationRoleServices>();
             services.AddScoped<IBookingServices, BookingServices>();
             services.AddScoped<IDriverFormServices, DriverFormServices>();
-  
+            services.AddScoped<IRegisterServices, RegisterServices>();
+
             return services;
         }
 
@@ -25,6 +29,8 @@ namespace DriverHire.Api.Infrastructure
         {
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IDriverFormRepository, DriverFormRepository>();
+            services.AddScoped<IRegisterRepository, RegisterRepository>();
+
             return services;
         }
 

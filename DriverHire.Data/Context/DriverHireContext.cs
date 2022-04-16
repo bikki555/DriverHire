@@ -1,4 +1,5 @@
-﻿using DriverHire.Entity.Entity;
+﻿using DriverHire.Entity;
+using DriverHire.Entity.Entity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -38,8 +39,9 @@ namespace DriverHire.Data.Context
         public DbSet<Booking> Booking { get; set; }
 
             public DbSet<DriverForm> DriverForm { get; set; }
-            #endregion
-        }
+            public DbSet<Register> Register { get; set; }
+        #endregion
+    }
 
     }
 
