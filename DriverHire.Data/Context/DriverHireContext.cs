@@ -26,10 +26,10 @@ namespace DriverHire.Data.Context
             //creating table configurations//
             //if many then can moved to separate class//
             //driverform and applicationuser//
-            modelBuilder.Entity<DriverForm>().HasOne(df=>df.ApplicationUser)
-                .WithOne(au => au.DriverForm)
-                .HasForeignKey<ApplicationUser>(df =>df.Id)
-                .OnDelete(DeleteBehavior.NoAction);
+            //modelBuilder.Entity<DriverForm>().HasOne(df=>df.ApplicationUser)
+            //    .WithOne(au => au.DriverForm)
+            //    .HasForeignKey<ApplicationUser>(df =>df.Id)
+            //    .OnDelete(DeleteBehavior.NoAction);
         }
 
         //all table should be defined here test table demo

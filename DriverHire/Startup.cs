@@ -1,9 +1,11 @@
 using DriverHire.Api.Infrastructure;
 using DriverHire.Data.Context;
+using DriverHire.Entity.Entity;
 using DriverHire.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -43,6 +45,15 @@ namespace DriverHire
             services.AddScoped<IUnitofWork, UnitofWork>();
             //adding services di //
             services.AddServicesDI().AddRepositorysDI().AddAuthenticationDI();
+            services.AddIdentity<IdentityUser, ApplicationRole>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.User.RequireUniqueEmail = false;
+            }).AddEntityFrameworkStores<DriverHireContext>().AddDefaultTokenProviders();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

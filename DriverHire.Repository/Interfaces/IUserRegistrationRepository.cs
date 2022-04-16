@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using DriverHire.Entity.Entity;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DriverHire.Repository.Interfaces
 {
-    public interface IUserRegistrationRepository : IRepository<IdentityUser>
+    public interface IUserRegistrationRepository : IRepository<ApplicationUser>
     {
     }
 }

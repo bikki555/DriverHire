@@ -49,7 +49,9 @@ namespace DriverHire.Data.Migrations
             modelBuilder.Entity("DriverHire.Entity.Entity.ApplicationUser", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("IsCustomer")
                         .HasColumnType("bit");
@@ -116,6 +118,9 @@ namespace DriverHire.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("ApplicationUserId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("ChangedDate")
                         .HasColumnType("datetime2");
 
@@ -147,6 +152,8 @@ namespace DriverHire.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("DriverForm");
                 });
@@ -343,19 +350,20 @@ namespace DriverHire.Data.Migrations
 
             modelBuilder.Entity("DriverHire.Entity.Entity.ApplicationUser", b =>
                 {
-                    b.HasOne("DriverHire.Entity.Entity.DriverForm", "DriverForm")
-                        .WithOne("ApplicationUser")
-                        .HasForeignKey("DriverHire.Entity.Entity.ApplicationUser", "Id")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
-                    b.Navigation("DriverForm");
-
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DriverHire.Entity.Entity.DriverForm", b =>
+                {
+                    b.HasOne("DriverHire.Entity.Entity.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -407,11 +415,6 @@ namespace DriverHire.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("DriverHire.Entity.Entity.DriverForm", b =>
-                {
-                    b.Navigation("ApplicationUser");
                 });
 #pragma warning restore 612, 618
         }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DriverHire.Data.Migrations
 {
     [DbContext(typeof(DriverHireContext))]
-    [Migration("20220416064209_DriverForm")]
-    partial class DriverForm
+    [Migration("20220416172530_tableadded")]
+    partial class tableadded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,9 @@ namespace DriverHire.Data.Migrations
             modelBuilder.Entity("DriverHire.Entity.Entity.ApplicationUser", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("IsCustomer")
                         .HasColumnType("bit");
@@ -118,6 +120,9 @@ namespace DriverHire.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("ApplicationUserId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("ChangedDate")
                         .HasColumnType("datetime2");
 
@@ -150,7 +155,30 @@ namespace DriverHire.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ApplicationUserId");
+
                     b.ToTable("DriverForm");
+                });
+
+            modelBuilder.Entity("DriverHire.Entity.Register", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Otp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OtpExpiryDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Register");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -324,19 +352,20 @@ namespace DriverHire.Data.Migrations
 
             modelBuilder.Entity("DriverHire.Entity.Entity.ApplicationUser", b =>
                 {
-                    b.HasOne("DriverHire.Entity.Entity.DriverForm", "DriverForm")
-                        .WithOne("ApplicationUser")
-                        .HasForeignKey("DriverHire.Entity.Entity.ApplicationUser", "Id")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
 
-                    b.Navigation("DriverForm");
-
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DriverHire.Entity.Entity.DriverForm", b =>
+                {
+                    b.HasOne("DriverHire.Entity.Entity.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -388,11 +417,6 @@ namespace DriverHire.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("DriverHire.Entity.Entity.DriverForm", b =>
-                {
-                    b.Navigation("ApplicationUser");
                 });
 #pragma warning restore 612, 618
         }

@@ -17,6 +17,5 @@ namespace DriverHire.Entity.Entity
         public bool IsCustomer { get; set; }
         public string Token { get; set; }
         public DateTime TokenExpiryDate { get; set; }
-        public DriverForm DriverForm { get; set; }
     }
 }

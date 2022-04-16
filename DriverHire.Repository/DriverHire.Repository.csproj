@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DriverHire.Data\DriverHire.Data.csproj" />
+    <ProjectReference Include="..\DriverHire.Entity\DriverHire.Entity.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,9 @@
-﻿using DriverHire.Repository;
+﻿using DriverHire.Entity.Dto;
+using DriverHire.Entity.Entity;
+using DriverHire.Repository;
 using DriverHire.Repository.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +14,65 @@ namespace DriverHire.Services.Services
 {
     public interface IUserRegistrationServices
     {
-        public Task<IdentityUser> Save(IdentityUser entity);
+        public Task<UserRegistrationDto> Save(UserRegistrationDto dto);
+        Task<ModelStateDictionary> Validation(UserRegistrationDto dto);
     }
 
     public class UserRegistrationServices : IUserRegistrationServices
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IUserRegistrationRepository _UserRegistrationRepository;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IRegisterRepository _registerRepository;
 
-        public UserRegistrationServices(IUnitofWork unitofWork, IUserRegistrationRepository userRegistrationRepository)
+        public UserRegistrationServices(IUnitofWork unitofWork,
+                                        IUserRegistrationRepository userRegistrationRepository,
+                                        UserManager<IdentityUser> userManager,
+                                        IRegisterRepository registerRepository)
         {
             _unitofWork = unitofWork;
             _UserRegistrationRepository = userRegistrationRepository;
+            _userManager = userManager;
+            _registerRepository = registerRepository;
         }
 
-        public async Task<IdentityUser> Save(IdentityUser entity)
+        public async Task<UserRegistrationDto> Save(UserRegistrationDto dto)
         {
-            var result = (await _UserRegistrationRepository.Insert(entity)).Entity;
-            await _unitofWork.SaveAsync();
-            return result;
+            var identityUser = new IdentityUser
+            {
+                UserName=dto.Email,
+                PhoneNumber = dto.PhoneNumber,
+                Email = dto.Email
+            };
+            var identityResult = await _userManager.CreateAsync(identityUser, dto.Password);
+            var applicationUser = new ApplicationUser
+            {
+               IsCustomer=dto.IsCustomer,
+               UserId= identityUser.Id,
+            };
+            if (identityResult.Succeeded)
+            {
+                await _UserRegistrationRepository.Insert(applicationUser);
+                await _unitofWork.SaveAsync();
+            }
+            else
+            throw new Exception(string.Join("][", identityResult.Errors));
+
+            return dto;
+        }
+
+        public async Task<ModelStateDictionary> Validation(UserRegistrationDto dto)
+        {
+            ModelStateDictionary modelState = new ModelStateDictionary();
+            var register = (await _registerRepository.SelectWhere(x => x.Email == dto.Email)).OrderByDescending(x => x.OtpExpiryDate).FirstOrDefault();
+            if (string.Equals(register.Otp, dto.Otp))
+            {
+                if (register.OtpExpiryDate < DateTime.Now)
+                    modelState.AddModelError(dto.Otp, "Otp Already Expired! Please Re send Otp");
+            }
+            else
+                modelState.AddModelError(dto.Otp, "Otp does not Match");
+            return modelState;
         }
     }
 }

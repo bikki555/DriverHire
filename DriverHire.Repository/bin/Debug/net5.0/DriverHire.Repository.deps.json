@@ -9,6 +9,7 @@
       "DriverHire.Repository/1.0.0": {
         "dependencies": {
           "DriverHire.Data": "1.0.0",
+          "DriverHire.Entity": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.15"
         },
         "runtime": {
