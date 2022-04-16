@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DriverHire.Entity.Dto;
+using DriverHire.Entity.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +10,19 @@ namespace DriverHire.Services.Mapping
 {
     public static class ManualMappingEntityDto
     {
-        //Demo  manual mapping TestDto to  Test Entity
-        /*
-        public static Test ToEntity(this TestDto dTO)
+       
+       
+        public static DriverForm ToEntity(this DriverFormPostDto dTO)
             => dTO is null
                 ? null
-                : new Test
+                : new DriverForm
                 {
-                    Test.Id= dTO.Id,
-                };
-        */
+                    Name=dTO.Name,
+                    DateOfBirth=dTO.DateOfBirth,
+                    VehicleType=dTO.VehicleType,
+                    Rate=dTO.Rate,
+                    Shift=dTO.Shift
+    };
+        
     }
 }

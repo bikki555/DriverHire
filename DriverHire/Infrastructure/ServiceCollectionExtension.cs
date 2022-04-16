@@ -14,14 +14,17 @@ namespace DriverHire.Api.Infrastructure
         public static IServiceCollection AddServicesDI(this IServiceCollection services)
         {
             services.AddScoped<IApplicationRoleSevices, ApplicationRoleServices>();
+            services.AddScoped<IImageProcessingServices, ImageProcessingServices>();
             services.AddScoped<IBookingServices, BookingServices>();
             services.AddScoped<IDriverFormServices, DriverFormServices>();
+  
             return services;
         }
 
         public static IServiceCollection AddRepositorysDI(this IServiceCollection services)
         {
             services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IDriverFormRepository, DriverFormRepository>();
             return services;
         }
 

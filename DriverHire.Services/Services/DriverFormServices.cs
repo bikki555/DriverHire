@@ -1,6 +1,8 @@
-﻿using DriverHire.Entity.Entity;
+﻿using DriverHire.Entity.Dto;
+using DriverHire.Entity.Entity;
 using DriverHire.Repository;
 using DriverHire.Repository.Interfaces;
+using DriverHire.Services.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +13,31 @@ namespace DriverHire.Services.Services
 {
     public interface IDriverFormServices
     {
-        public Task<DriverForm> Save(DriverForm entity);
+        public Task<DriverFormPostDto> Save(DriverFormPostDto Dto);
     }
     public class DriverFormServices : IDriverFormServices
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IDriverFormRepository _DriverFormRepository;
+        private readonly IImageProcessingServices _imageProcessingServices;
 
-        public DriverFormServices(IUnitofWork unitofWork, IDriverFormRepository DriverFormRepository)
+        public DriverFormServices(IUnitofWork unitofWork, IDriverFormRepository DriverFormRepository,IImageProcessingServices imageProcessingServices)
         {
             _unitofWork = unitofWork;
             _DriverFormRepository = DriverFormRepository;
+            _imageProcessingServices = imageProcessingServices;
         }
 
-        public async Task<DriverForm> Save(DriverForm entity)
+        public async Task<DriverFormPostDto> Save(DriverFormPostDto dto)
         {
-            //mapping //
-            var result = (await _DriverFormRepository.Insert(entity)).Entity;
+            var citizenPhoto= await _imageProcessingServices.UploadImage(dto.CitizenPhotoFile, "cz" + DateTime.Now.ToFileTime().ToString() + dto.Name);
+            var licensePhoto=await _imageProcessingServices.UploadImage(dto.LicensePhotoFile, "lc" + DateTime.Now.ToFileTime().ToString() + dto.Name);
+            var entity = dto.ToEntity();
+            entity.CitizenPhoto = citizenPhoto;
+            entity.LicensePhoto = licensePhoto;
+            var result = (await _DriverFormRepository.Insert(entity));
             await _unitofWork.SaveAsync();
-            return result;
+            return dto;
         }
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DriverHire.Data.Context
 {
-    public partial class DriverHireContext : IdentityDbContext<ApplicationUser,
+    public partial class DriverHireContext : IdentityDbContext<IdentityUser,
                                                         ApplicationRole,
                                                         string,
                                                         IdentityUserClaim<string>,
@@ -23,12 +23,19 @@ namespace DriverHire.Data.Context
         {
             base.OnModelCreating(modelBuilder);
             //creating table configurations//
+            //if many then can moved to separate class//
+            //driverform and applicationuser//
+            modelBuilder.Entity<DriverForm>().HasOne(df=>df.ApplicationUser)
+                .WithOne(au => au.DriverForm)
+                .HasForeignKey<ApplicationUser>(df =>df.Id)
+                .OnDelete(DeleteBehavior.NoAction);
         }
 
-            //all table should be defined here test table demo
-            #region DbSet
-            
-            public DbSet<Booking> Booking { get; set; }
+        //all table should be defined here test table demo
+        #region DbSet
+
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Booking> Booking { get; set; }
 
             public DbSet<DriverForm> DriverForm { get; set; }
             #endregion

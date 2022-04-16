@@ -1,4 +1,5 @@
-﻿using DriverHire.Entity.Entity;
+﻿using DriverHire.Entity.Dto;
+using DriverHire.Entity.Entity;
 using DriverHire.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,15 +16,16 @@ namespace DriverHire.Api.Controllers
     {
 
         private readonly IDriverFormServices _DriverFormServices;
-
         public DriverFormController(IDriverFormServices DriverFormServices)
         {
             _DriverFormServices = DriverFormServices;
         }
         [HttpPost]
-        public async Task<IActionResult> Save(DriverForm entity)
+        public async Task<IActionResult> Save(DriverFormPostDto dto)
         {
-            var result = await _DriverFormServices.Save(entity);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var result = await _DriverFormServices.Save(dto);
             return Ok(result);
 
 
