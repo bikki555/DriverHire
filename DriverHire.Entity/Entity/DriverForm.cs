@@ -21,6 +21,5 @@ namespace DriverHire.Entity.Entity
         public DateTime ChangedDate { get; set; }
         public int? UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
-
     }
 }

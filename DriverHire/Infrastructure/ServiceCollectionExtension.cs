@@ -1,6 +1,7 @@
 ﻿using DriverHire.Repository.Interfaces;
 using DriverHire.Repository.Repository;
 using DriverHire.Services;
+using DriverHire.Services.Infrastructure;
 using DriverHire.Services.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -39,6 +40,7 @@ namespace DriverHire.Api.Infrastructure
 
         public static IServiceCollection AddAuthenticationDI(this IServiceCollection services)
         {
+            services.AddScoped(typeof(JwtGenerator));
             return services;
         }
 

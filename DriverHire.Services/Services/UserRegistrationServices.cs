@@ -1,7 +1,9 @@
 ﻿using DriverHire.Entity.Dto;
 using DriverHire.Entity.Entity;
+using DriverHire.Entity.Enums;
 using DriverHire.Repository;
 using DriverHire.Repository.Interfaces;
+using DriverHire.Services.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
@@ -16,7 +18,7 @@ namespace DriverHire.Services.Services
     {
         public Task<UserRegistrationDto> Save(UserRegistrationDto dto);
         Task<ModelStateDictionary> Validation(UserRegistrationDto dto);
-        Task<bool> CheckLogin(LoginDto dto);
+        Task<(Authtoken, UserSignInResult)> CheckLogin(LoginDto dto);
 
     }
 
@@ -26,31 +28,34 @@ namespace DriverHire.Services.Services
         private readonly IUserRegistrationRepository _UserRegistrationRepository;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IRegisterRepository _registerRepository;
+        private readonly JwtGenerator _jwtGenerator;
 
         public UserRegistrationServices(IUnitofWork unitofWork,
                                         IUserRegistrationRepository userRegistrationRepository,
                                         UserManager<IdentityUser> userManager,
-                                        IRegisterRepository registerRepository)
+                                        IRegisterRepository registerRepository,
+                                        JwtGenerator jwtGenerator)
         {
             _unitofWork = unitofWork;
             _UserRegistrationRepository = userRegistrationRepository;
             _userManager = userManager;
             _registerRepository = registerRepository;
+            _jwtGenerator = jwtGenerator;
         }
 
         public async Task<UserRegistrationDto> Save(UserRegistrationDto dto)
         {
             var identityUser = new IdentityUser
             {
-                UserName=dto.Email,
+                UserName = dto.Email,
                 PhoneNumber = dto.PhoneNumber,
                 Email = dto.Email
             };
             var identityResult = await _userManager.CreateAsync(identityUser, dto.Password);
             var applicationUser = new ApplicationUser
             {
-               IsCustomer=dto.IsCustomer,
-               UserId= identityUser.Id,
+                IsCustomer = dto.IsCustomer,
+                UserId = identityUser.Id,
             };
             if (identityResult.Succeeded)
             {
@@ -58,7 +63,7 @@ namespace DriverHire.Services.Services
                 await _unitofWork.SaveAsync();
             }
             else
-            throw new Exception(string.Join("][", identityResult.Errors));
+                throw new Exception(string.Join("][", identityResult.Errors));
 
             return dto;
         }
@@ -77,16 +82,32 @@ namespace DriverHire.Services.Services
             return modelState;
         }
 
-        public async Task<bool> CheckLogin(LoginDto dto)
+        public async Task<(Authtoken, UserSignInResult)> CheckLogin(LoginDto dto)
         {
-            var identityUser = new IdentityUser
+            var user = await _userManager.FindByNameAsync(dto.Email);
+            var isLoginValid = await _userManager.CheckPasswordAsync(user, dto.Password);
+
+            if (!isLoginValid)
+                return (null, UserSignInResult.LoginInvalid);
+            // var applicationUser = (await _UserRegistrationRepository.SelectWhere(a => a.UserId == user.Id)).FirstOrDefault();
+            var token = isLoginValid ? await _jwtGenerator.GenerateJwtTokenAsync(user) : string.Empty;
+            // await SaveTokens(applicationUser, null);
+            return (new Authtoken
             {
-                UserName = dto.Email,
-            };
-            var User = await _userManager.CheckPasswordAsync(identityUser,dto.Password);
-            return User;
-            
+                AccessToken = token,
+                RefreshToken = null
+            }, UserSignInResult.Success);
         }
+
+
+        public async Task SaveTokens(ApplicationUser user, string refreshToken)
+        {
+            user.RefreshToken = refreshToken;
+            user.RefreshTokenExpiryDate = null;
+            _UserRegistrationRepository.Update(user);
+            await _unitofWork.SaveAsync();
+        }
+
 
     }
 }

@@ -273,3 +273,4 @@ C:\Users\ashis\Driverhiring\DriverHire\DriverHire\obj\Debug\net5.0\DriverHire.Ap
 C:\Users\ashis\Driverhiring\DriverHire\DriverHire\obj\Debug\net5.0\ref\DriverHire.Api.dll
 C:\Users\ashis\Driverhiring\DriverHire\DriverHire\obj\Debug\net5.0\DriverHire.Api.pdb
 C:\Users\ashis\Driverhiring\DriverHire\DriverHire\obj\Debug\net5.0\DriverHire.Api.genruntimeconfig.cache
+F:\Projects\DriverHire\DriverHire\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

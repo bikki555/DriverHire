@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "DriverHire.Services/1.0.0": {
         "dependencies": {
+          "DriverHire.Entity": "1.0.0",
           "DriverHire.Repository": "1.0.0",
           "Magick.NET-Q16-AnyCPU": "11.1.0",
           "Microsoft.Extensions.Hosting.Abstractions": "6.0.0"
