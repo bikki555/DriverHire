@@ -809,20 +809,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BIKKI\\.nuget\\packages\\": {}
+    "C:\\Users\\ashis\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
+      "projectUniqueName": "C:\\Users\\ashis\\Driverhiring\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
       "projectName": "DriverHire.Entity",
-      "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
-      "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\DriverHire\\DriverHire.Entity\\obj\\",
+      "projectPath": "C:\\Users\\ashis\\Driverhiring\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
+      "packagesPath": "C:\\Users\\ashis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ashis\\Driverhiring\\DriverHire\\DriverHire.Entity\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ashis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"

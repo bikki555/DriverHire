@@ -7279,20 +7279,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BIKKI\\.nuget\\packages\\": {}
+    "C:\\Users\\ashis\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
+      "projectUniqueName": "C:\\Users\\ashis\\Driverhiring\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
       "projectName": "DriverHire.Services",
-      "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
-      "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\DriverHire\\DriverHire.Services\\obj\\",
+      "projectPath": "C:\\Users\\ashis\\Driverhiring\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
+      "packagesPath": "C:\\Users\\ashis\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ashis\\Driverhiring\\DriverHire\\DriverHire.Services\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\ashis\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7306,8 +7311,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "F:\\Projects\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj": {
-              "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj"
+            "C:\\Users\\ashis\\Driverhiring\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj": {
+              "projectPath": "C:\\Users\\ashis\\Driverhiring\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj"
             }
           }
         }

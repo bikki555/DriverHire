@@ -16,6 +16,8 @@ namespace DriverHire.Services.Services
     {
         public Task<UserRegistrationDto> Save(UserRegistrationDto dto);
         Task<ModelStateDictionary> Validation(UserRegistrationDto dto);
+        Task<bool> CheckLogin(LoginDto dto);
+
     }
 
     public class UserRegistrationServices : IUserRegistrationServices
@@ -74,5 +76,17 @@ namespace DriverHire.Services.Services
                 modelState.AddModelError(dto.Otp, "Otp does not Match");
             return modelState;
         }
+
+        public async Task<bool> CheckLogin(LoginDto dto)
+        {
+            var identityUser = new IdentityUser
+            {
+                UserName = dto.Email,
+            };
+            var User = await _userManager.CheckPasswordAsync(identityUser,dto.Password);
+            return User;
+            
+        }
+
     }
 }

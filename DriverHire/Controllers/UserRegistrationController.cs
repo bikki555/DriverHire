@@ -32,5 +32,14 @@ namespace DriverHire.Api.Controllers
           
 
         }
+
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login(LoginDto dto)
+        {
+            var result = await _userRegistrationServices.CheckLogin(dto);
+            return Ok(result);
+        }
     }
 }
