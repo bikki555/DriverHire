@@ -48,6 +48,8 @@ namespace DriverHire.Data.Context
             public DbSet<DriverForm> DriverForm { get; set; }
             public DbSet<Register> Register { get; set; }
             
+            public DbSet<Payment> Payment { get; set; }
+            
         #endregion
     }
 
