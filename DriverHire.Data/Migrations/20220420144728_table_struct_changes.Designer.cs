@@ -4,14 +4,16 @@ using DriverHire.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DriverHire.Data.Migrations
 {
     [DbContext(typeof(DriverHireContext))]
-    partial class DriverHireContextModelSnapshot : ModelSnapshot
+    [Migration("20220420144728_table_struct_changes")]
+    partial class table_struct_changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

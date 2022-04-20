@@ -25,9 +25,9 @@ namespace DriverHire.Entity.Entity
         public string Shift { get; set; }
 
         public string PickUpLocation { get; set;}
-
         public string Message { get; set; }
-        public int UserId { get; set; }
+        public bool IsBooked { get; set; }
+        public int? UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
         

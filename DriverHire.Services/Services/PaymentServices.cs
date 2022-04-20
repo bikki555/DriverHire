@@ -13,7 +13,7 @@ namespace DriverHire.Services.Services
 {
     public interface IPaymentServices
     {
-        public Task<PaymentDto> Save(PaymentDto Dto);
+       // public Task<PaymentDto> Save(PaymentDto Dto);
 
     }
     public class PaymentServices : IPaymentServices
@@ -27,12 +27,12 @@ namespace DriverHire.Services.Services
 
         }
 
-        public Task<PaymentDto> Save(PaymentDto Dto)
-        {
-            var result = (await _PaymentRepository.Insert(Dto)).Entity;
-            await _unitofWork.SaveAsync();
-            return result;
-        }
+        //public Task<PaymentDto> Save(PaymentDto Dto)
+        //{
+        //    var result = (await _PaymentRepository.Insert(Dto)).Entity;
+        //    await _unitofWork.SaveAsync();
+        //    return result;
+        //}
     }
     
 

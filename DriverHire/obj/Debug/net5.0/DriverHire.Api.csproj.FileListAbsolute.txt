@@ -56,7 +56,6 @@ F:\Projects\DriverHire\DriverHire\bin\Debug\net5.0\DriverHire.Data.dll
 F:\Projects\DriverHire\DriverHire\bin\Debug\net5.0\DriverHire.Entity.dll
 F:\Projects\DriverHire\DriverHire\bin\Debug\net5.0\DriverHire.Data.pdb
 F:\Projects\DriverHire\DriverHire\bin\Debug\net5.0\DriverHire.Entity.pdb
-F:\Projects\DriverHire\DriverHire\obj\Debug\net5.0\DriverHire.Api.MvcApplicationPartsAssemblyInfo.cs
 F:\Projects\DriverHire\DriverHire\obj\Debug\net5.0\staticwebassets\DriverHire.Api.StaticWebAssets.Manifest.cache
 F:\Projects\DriverHire\DriverHire\obj\Debug\net5.0\staticwebassets\DriverHire.Api.StaticWebAssets.xml
 F:\Projects\DriverHire\DriverHire\obj\Debug\net5.0\scopedcss\bundle\DriverHire.Api.styles.css
