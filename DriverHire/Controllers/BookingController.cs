@@ -22,7 +22,7 @@ namespace DriverHire.Api.Controllers
             _bookingServices = bookingServices;
         }
         [HttpPost]
-        public async Task<IActionResult> Save(BookingDto entity)
+        public async Task<IActionResult> Save(Booking entity)
         {
             var result = await _bookingServices.Save(entity);
             return Ok(result);

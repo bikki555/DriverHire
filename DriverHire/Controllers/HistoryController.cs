@@ -23,11 +23,11 @@ namespace DriverHire.Api.Controllers
             _bookingServices = bookingServices;
         }
         [HttpPost]
-        public async Task<IActionResult> Save(BookingDto dto)
+        public async Task<IActionResult> Save(Booking entity)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var result = await _bookingServices.Save(dto);
+            var result = await _bookingServices.Save(entity);
             return Ok(result);
 
 
