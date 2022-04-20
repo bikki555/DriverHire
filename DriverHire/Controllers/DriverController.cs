@@ -1,6 +1,7 @@
 ﻿using DriverHire.Entity.Dto;
 using DriverHire.Entity.Entity;
 using DriverHire.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,13 @@ namespace DriverHire.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
 
-    public class DriverFormController : Controller
+    public class DriverController : Controller
     {
 
         private readonly IDriverFormServices _DriverFormServices;
-        public DriverFormController(IDriverFormServices DriverFormServices)
+        public DriverController(IDriverFormServices DriverFormServices)
         {
             _DriverFormServices = DriverFormServices;
         }
@@ -26,6 +28,17 @@ namespace DriverHire.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var result = await _DriverFormServices.Save(dto);
+            return Ok(result);
+
+
+        }
+        [HttpGet]
+        [Route("Recommendation")]
+        public async Task<IActionResult> Recommendation(int bookingId)
+        {
+            
+                
+            var result = await _DriverFormServices.Recommendation(bookingId);
             return Ok(result);
 
 

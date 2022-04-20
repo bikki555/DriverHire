@@ -1,4 +1,5 @@
 ﻿using DriverHire.Entity.Dto;
+using DriverHire.Entity.Enums;
 using DriverHire.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -38,8 +39,15 @@ namespace DriverHire.Api.Controllers
         [Route("Login")]
         public async Task<IActionResult> Login(LoginDto dto)
         {
-            var result = await _userRegistrationServices.CheckLogin(dto);
-            return Ok(result);
+            if (ModelState.IsValid)
+            {
+                var (token, userSignInResult) = await _userRegistrationServices.CheckLogin(dto);
+                if (userSignInResult == UserSignInResult.Success)
+                    return Ok(token);
+                else
+                    ModelState.AddModelError(nameof(dto.Email), "Invalid login credentials");
+            }
+            return BadRequest(ModelState);
         }
     }
 }

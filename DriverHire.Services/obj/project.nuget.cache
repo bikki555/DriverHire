@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k1w/vnCxOxQ1rWqsdX0esHtHBy0CGcbznARQcgUcVGKD6f4HmNe09yQmNQp7Zj1sVaRVZ7hWLCUKDY47GHt4mA==",
+  "dgSpecHash": "aDJlQKw7L/Q26exxA0IwhdyVibOYeMRmi6v9GMxiK6yV1pHf/O1AplJeI/o++NQIHjxjifcjx0o/F9tf8YG1rA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ashis\\Driverhiring\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
+  "projectFilePath": "C:\\Users\\ashis\\DriverHiring\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ashis\\.nuget\\packages\\magick.net-q16-anycpu\\11.1.0\\magick.net-q16-anycpu.11.1.0.nupkg.sha512",
     "C:\\Users\\ashis\\.nuget\\packages\\magick.net.core\\11.1.0\\magick.net.core.11.1.0.nupkg.sha512",

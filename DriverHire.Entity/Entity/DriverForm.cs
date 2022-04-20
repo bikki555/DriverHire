@@ -1,6 +1,7 @@
 ﻿using DriverHire.Entity.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,5 +23,6 @@ namespace DriverHire.Entity.Entity
         public int? UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
+        public string ContactNumber { get; set; }
     }
 }

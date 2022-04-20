@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DriverHire.Entity.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace DriverHire.Entity.Entity
 
         public DateTime DateTime { get; set; }
 
-        public string VehicleType { get; set; }
+        public VehicleType VehicleType { get; set; }
 
         public string Brand { get; set; }
 
@@ -26,6 +27,8 @@ namespace DriverHire.Entity.Entity
         public string PickUpLocation { get; set;}
 
         public string Message { get; set; }
+        public int UserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
         
    }

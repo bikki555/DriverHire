@@ -14,24 +14,45 @@ namespace DriverHire.Services.Services
     public interface IDriverFormServices
     {
         public Task<DriverFormPostDto> Save(DriverFormPostDto Dto);
+        Task<IEnumerable<DriverRecommendationDto>> Recommendation(int bookingId);
     }
     public class DriverFormServices : IDriverFormServices
     {
         private readonly IUnitofWork _unitofWork;
         private readonly IDriverFormRepository _DriverFormRepository;
         private readonly IImageProcessingServices _imageProcessingServices;
+        private readonly IBookingRepository _bookingRepository;
 
-        public DriverFormServices(IUnitofWork unitofWork, IDriverFormRepository DriverFormRepository,IImageProcessingServices imageProcessingServices)
+        public DriverFormServices(IUnitofWork unitofWork, IDriverFormRepository DriverFormRepository, IImageProcessingServices imageProcessingServices, IBookingRepository bookingRepository)
         {
             _unitofWork = unitofWork;
             _DriverFormRepository = DriverFormRepository;
             _imageProcessingServices = imageProcessingServices;
+            _bookingRepository = bookingRepository;
         }
+
+        public async Task<IEnumerable<DriverRecommendationDto>> Recommendation(int bookingId)
+        {
+
+            var booking = await _bookingRepository.GetById(bookingId);
+            return (await _DriverFormRepository.GetAll()).Select(x => new DriverRecommendationDto
+            {
+                DriverName = x.Name,
+                ContactNo = x.ContactNumber,
+                Price = Convert.ToDecimal(x.Rate) * booking.Duration
+            }
+              );
+
+        }
+
+
+
+
 
         public async Task<DriverFormPostDto> Save(DriverFormPostDto dto)
         {
-            var citizenPhoto= await _imageProcessingServices.UploadImage(dto.CitizenPhotoFile, "cz" + DateTime.Now.ToFileTime().ToString() + dto.Name);
-            var licensePhoto=await _imageProcessingServices.UploadImage(dto.LicensePhotoFile, "lc" + DateTime.Now.ToFileTime().ToString() + dto.Name);
+            var citizenPhoto = await _imageProcessingServices.UploadImage(dto.CitizenPhotoFile, "cz" + DateTime.Now.ToFileTime().ToString() + dto.Name);
+            var licensePhoto = await _imageProcessingServices.UploadImage(dto.LicensePhotoFile, "lc" + DateTime.Now.ToFileTime().ToString() + dto.Name);
             var entity = dto.ToEntity();
             entity.CitizenPhoto = citizenPhoto;
             entity.LicensePhoto = licensePhoto;

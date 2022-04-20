@@ -15,7 +15,14 @@ namespace DriverHire.Entity.Entity
         [ForeignKey(nameof(UserId))]
         public IdentityUser User { get; set; }
         public bool IsCustomer { get; set; }
-        public string Token { get; set; }
-        public DateTime TokenExpiryDate { get; set; }
+        public string RefreshToken { get; set; }
+        public DateTime? RefreshTokenExpiryDate { get; set; }
+        public bool? IsAndroid { get; set; }
+        public  string DeviceId { get; set; }
+        public bool Status { get; set; }
+        public DriverForm DriverForm { get; set; }
+        public ICollection<Booking> Bookings { get; set; }
+
+
     }
 }
