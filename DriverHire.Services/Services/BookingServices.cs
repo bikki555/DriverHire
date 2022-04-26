@@ -14,11 +14,8 @@ namespace DriverHire.Services.Services
     public interface IBookingServices
     {
         //add
-        public Task<Booking> Save(Booking entity);
-
-        Task<IEnumerable<BookingDto>> Recommendation(int bookingId);
-        //delete
-        //update
+        public Task<int> Save(ClientBookingDto dto);
+        public Task<BookingDetailsDto> BookingHistory(int bookingId, bool?isCanceled);
         public class BookingServices : IBookingServices
         {
             private readonly IUnitofWork _unitofWork;
@@ -30,52 +27,30 @@ namespace DriverHire.Services.Services
                 _bookingRepository = bookingRepository;
             }
 
-            public async Task<IEnumerable<BookingDto>> Recommendation(int bookingId)
+            public Task<BookingDetailsDto> BookingHistory(int bookingId, bool? isCanceled)
             {
-
-                var booking = await _bookingRepository.GetById(bookingId);
-                return (await _bookingRepository.GetAll()).Select(x => new BookingDto
-                {
-
-                    Duration = x.Duration,
-                    DateTime = x.DateTime
-                }
-                  );
-
+                throw new NotImplementedException();
             }
-            public async Task<Booking> Save(Booking entity)
+            public async Task<int> Save(ClientBookingDto dto)
             {
                 //mapping //
+                var entity = new Booking
+                {
+                    DestinationFrom = dto.DestinationFrom,
+                    DestinationTo = dto.DestinationTo,
+                    DateTime = dto.DateTime,
+                    VehicleType = dto.VehicleType,
+                    Brand = dto.Brand,
+                    Duration = dto.Duration,
+                    Shift = dto.Shift,
+                    PickUpLocation = dto.PickUpLocation,
+                    Message = dto.Message
+                };
                 var result = (await _bookingRepository.Insert(entity)).Entity;
                 await _unitofWork.SaveAsync();
-                return result;
+                return result.Id;
             }
         }
 
     }
 }
-
-//    public class BookingServices : IBookingServices
-//    {
-//        private readonly IUnitofWork _unitofWork;
-//        private readonly IBookingRepository _bookingRepository;
-
-//        public BookingServices(IUnitofWork unitofWork, IBookingRepository bookingRepository)
-//        {
-//            _unitofWork = unitofWork;
-//            _bookingRepository = bookingRepository;
-//        }
-
-
-
-//        public async Task<Booking> Save(Booking entity)
-//        {
-//            //mapping //
-//            var result = (await _bookingRepository.Insert(entity)).Entity;
-//            await _unitofWork.SaveAsync();
-//            return result;
-//        }
-//    }
-//}
-
-

@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DriverHire.Services.Services
@@ -19,6 +18,8 @@ namespace DriverHire.Services.Services
         public Task<UserRegistrationDto> Save(UserRegistrationDto dto);
         Task<ModelStateDictionary> Validation(UserRegistrationDto dto);
         Task<(Authtoken, UserSignInResult)> CheckLogin(LoginDto dto);
+        public Task<IEnumerable<UserDetailsDto>> Get(int? id);
+        public Task<ApplicationUser> GetLoggedInUser();
 
     }
 
@@ -75,10 +76,10 @@ namespace DriverHire.Services.Services
             if (string.Equals(register.Otp, dto.Otp))
             {
                 if (register.OtpExpiryDate < DateTime.Now)
-                    modelState.AddModelError(dto.Otp, "Otp Already Expired! Please Re send Otp");
+                    modelState.AddModelError(nameof(dto.Otp), "Otp Already Expired! Please Re send Otp");
             }
             else
-                modelState.AddModelError(dto.Otp, "Otp does not Match");
+                modelState.AddModelError(nameof(dto.Otp), "Otp does not Match");
             return modelState;
         }
 
@@ -108,6 +109,23 @@ namespace DriverHire.Services.Services
             await _unitofWork.SaveAsync();
         }
 
+        public async Task<IEnumerable<UserDetailsDto>> Get(int? id)
+        {
+            var userDetails = _userManager.Users;
+            var applicationUsers = await _UserRegistrationRepository.GetAll();
+            var result = userDetails.Select(x => new UserDetailsDto
+            {
+                Id = applicationUsers.Where(au => au.UserId == x.Id).FirstOrDefault().Id,
+                UserName = x.UserName,
+                Email = x.Email,
+                PhoneNumber = x.PhoneNumber
+            }).Where(r=>!id.HasValue || r.Id==id) ;
+            return result;
+        }
 
+        public Task<ApplicationUser> GetLoggedInUser()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

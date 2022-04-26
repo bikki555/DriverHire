@@ -26,10 +26,18 @@ namespace DriverHire.Entity.Entity
 
         public string PickUpLocation { get; set;}
         public string Message { get; set; }
+        public int? CustomerId { get; set; }
+        public ApplicationUser Customer { get; set; }
         public bool IsBooked { get; set; }
-        public int? UserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public DateTime? BookingAcceptedDate { get; set; }
+        public DateTime? CanceledDate { get; set; }
+        public int? CancelById { get; set; }
+        public ApplicationUser CancelBy { get; set; }
+        public int? DriverId { get; set; }
+        public ApplicationUser Driver { get; set; }
 
-        
-   }
+        public ICollection<FeedBack> FeedBacks { get; set; }
+
+
+    }
 }

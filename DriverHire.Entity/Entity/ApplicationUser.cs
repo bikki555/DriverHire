@@ -20,8 +20,11 @@ namespace DriverHire.Entity.Entity
         public bool? IsAndroid { get; set; }
         public  string DeviceId { get; set; }
         public bool Status { get; set; }
+        public bool IsActive { get; set; }
         public DriverForm DriverForm { get; set; }
-        public ICollection<Booking> Bookings { get; set; }
+        public ICollection<Booking> Customers { get; set; }
+        public ICollection<Booking> Drivers { get; set; }
+        public ICollection<Booking> CancelBys { get; set; }
 
 
     }

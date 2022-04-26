@@ -36,8 +36,6 @@ namespace DriverHire.Api.Controllers
         [Route("Recommendation")]
         public async Task<IActionResult> Recommendation(int bookingId)
         {
-            
-                
             var result = await _DriverFormServices.Recommendation(bookingId);
             return Ok(result);
 

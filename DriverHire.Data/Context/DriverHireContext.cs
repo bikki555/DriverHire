@@ -26,16 +26,33 @@ namespace DriverHire.Data.Context
             //creating table configurations//
             //if many then can moved to separate class//
             //driverform and applicationuser//
-            modelBuilder.Entity<DriverForm>().HasOne(df=>df.ApplicationUser)
+            modelBuilder.Entity<DriverForm>().HasOne(df => df.ApplicationUser)
                 .WithOne(au => au.DriverForm)
-                .HasForeignKey<DriverForm>(df =>df.UserId)
+                .HasForeignKey<DriverForm>(df => df.UserId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             //booking and applicationuser//
-            modelBuilder.Entity<Booking>().HasOne(bo => bo.ApplicationUser)
-               .WithMany(au => au.Bookings)
-                .HasForeignKey(bo => bo.UserId)
+            modelBuilder.Entity<Booking>().HasOne(bo => bo.Customer)
+               .WithMany(au => au.Customers)
+                .HasForeignKey(bo => bo.CustomerId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+
+            modelBuilder.Entity<Booking>().HasOne(bo => bo.Driver)
+               .WithMany(au => au.Drivers)
+                .HasForeignKey(bo => bo.DriverId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Booking>().HasOne(bo => bo.CancelBy)
+               .WithMany(au => au.CancelBys)
+                .HasForeignKey(bo => bo.CancelById)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<FeedBack>().HasOne(fb => fb.Booking)
+              .WithMany(bo => bo.FeedBacks)
+               .HasForeignKey(bo => bo.BookingId)
+               .OnDelete(DeleteBehavior.NoAction);
+
 
         }
 
@@ -45,13 +62,14 @@ namespace DriverHire.Data.Context
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Booking> Booking { get; set; }
 
-            public DbSet<DriverForm> DriverForm { get; set; }
-            public DbSet<Register> Register { get; set; }
-            
-            public DbSet<Payment> Payment { get; set; }
-            
+        public DbSet<DriverForm> DriverForm { get; set; }
+        public DbSet<Register> Register { get; set; }
+
+        public DbSet<Payment> Payment { get; set; }
+        public DbSet<FeedBack> FeedBack { get; set; }
+
         #endregion
     }
 
-    }
+}
 

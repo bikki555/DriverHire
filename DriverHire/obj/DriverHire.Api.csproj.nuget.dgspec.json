@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Projects\\DriverHire\\DriverHire\\DriverHire.Api.csproj": {}
+    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire\\DriverHire.Api.csproj": {}
   },
   "projects": {
-    "F:\\Projects\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj": {
+    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj",
+        "projectUniqueName": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj",
         "projectName": "DriverHire.Data",
-        "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj",
+        "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj",
         "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\DriverHire\\DriverHire.Data\\obj\\",
+        "outputPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
-                "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
+              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
+                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
               }
             }
           }
@@ -45,31 +45,15 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Identity": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[5.0.3, )"
-            },
-            "Microsoft.AspNetCore.Mvc.DataAnnotations": {
-              "target": "Package",
-              "version": "[2.2.0, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[5.0.3, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.16, )"
             }
           },
           "imports": [
@@ -91,14 +75,14 @@
         }
       }
     },
-    "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
+    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
+        "projectUniqueName": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
         "projectName": "DriverHire.Entity",
-        "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
+        "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
         "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\DriverHire\\DriverHire.Entity\\obj\\",
+        "outputPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -134,7 +118,7 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.3, )"
+              "version": "[5.0.16, )"
             }
           },
           "imports": [
@@ -156,14 +140,14 @@
         }
       }
     },
-    "F:\\Projects\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj": {
+    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj",
+        "projectUniqueName": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj",
         "projectName": "DriverHire.Repository",
-        "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj",
+        "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj",
         "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\DriverHire\\DriverHire.Repository\\obj\\",
+        "outputPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -181,11 +165,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\Projects\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj": {
-                "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj"
+              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj": {
+                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj"
               },
-              "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
-                "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
+              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
+                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
               }
             }
           }
@@ -202,7 +186,7 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.15, )"
+              "version": "[5.0.16, )"
             }
           },
           "imports": [
@@ -224,14 +208,14 @@
         }
       }
     },
-    "F:\\Projects\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj": {
+    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
+        "projectUniqueName": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
         "projectName": "DriverHire.Services",
-        "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
+        "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
         "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\DriverHire\\DriverHire.Services\\obj\\",
+        "outputPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -249,11 +233,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
-                "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
+              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
+                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
               },
-              "F:\\Projects\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj": {
-                "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj"
+              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj": {
+                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj"
               }
             }
           }
@@ -272,9 +256,21 @@
               "target": "Package",
               "version": "[11.1.0, )"
             },
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.Extensions.Hosting.Abstractions": {
               "target": "Package",
-              "version": "[6.0.0, )"
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.17.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.17.0, )"
             }
           },
           "imports": [
@@ -296,14 +292,14 @@
         }
       }
     },
-    "F:\\Projects\\DriverHire\\DriverHire\\DriverHire.Api.csproj": {
+    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire\\DriverHire.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\DriverHire\\DriverHire\\DriverHire.Api.csproj",
+        "projectUniqueName": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire\\DriverHire.Api.csproj",
         "projectName": "DriverHire.Api",
-        "projectPath": "F:\\Projects\\DriverHire\\DriverHire\\DriverHire.Api.csproj",
+        "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire\\DriverHire.Api.csproj",
         "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\DriverHire\\DriverHire\\obj\\",
+        "outputPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -321,11 +317,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\Projects\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj": {
-                "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj"
+              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj": {
+                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj"
               },
-              "F:\\Projects\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj": {
-                "projectPath": "F:\\Projects\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj"
+              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj": {
+                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj"
               }
             }
           }
@@ -342,25 +338,21 @@
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[5.0.3, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[5.0.15, )"
+              "version": "[5.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.15, )"
+              "version": "[5.0.16, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.15, )"
+              "version": "[5.0.16, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.6.3, )"
+              "version": "[6.3.1, )"
             }
           },
           "imports": [
