@@ -1,6 +1,7 @@
 ﻿using DriverHire.Entity.Dto;
 using DriverHire.Entity.Entity;
 using DriverHire.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace DriverHire.Api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
-
     public class BookingController : Controller
     {
 
@@ -27,5 +28,12 @@ namespace DriverHire.Api.Controllers
             var result = await _bookingServices.Save(dto);
             return Ok(result);
         }
+        [HttpGet("[action]")]
+        public async Task<IActionResult> History()
+        {
+            var result = await _bookingServices.BookingHistoryDetails();
+            return Ok(result);
+        }
+
     }
 }

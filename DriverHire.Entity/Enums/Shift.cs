@@ -8,8 +8,8 @@ namespace DriverHire.Entity.Enums
 {
     public  enum Shift
     {
-        Day=1,
-        Evening=2,
+        Morning=1,
+        Day=2,
         Night=3
     }
 }

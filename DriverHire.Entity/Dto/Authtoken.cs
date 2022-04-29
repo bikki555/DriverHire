@@ -10,5 +10,8 @@ namespace DriverHire.Entity.Dto
     {
         public string AccessToken { get; set; }
         public string RefreshToken { get; set; }
+        public bool IsCustomer { get; set; }
+        public string Role { get; set; }
+        public string UserName { get; set; }
     }
 }

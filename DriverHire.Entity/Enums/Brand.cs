@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace DriverHire.Entity.Enums
 {
-    public enum VehicleType
+    public enum Brand
     {
-        Car=1, 
-        Bike=2,
-        Van=3
+        Toyota=1,
+        Suzuki,
+        Tesla,
+        BMW,
+        Audi
     }
 }

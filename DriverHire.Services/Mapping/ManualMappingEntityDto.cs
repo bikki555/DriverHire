@@ -10,8 +10,6 @@ namespace DriverHire.Services.Mapping
 {
     public static class ManualMappingEntityDto
     {
-       
-       
         public static DriverForm ToEntity(this DriverFormPostDto dTO)
             => dTO is null
                 ? null
@@ -22,7 +20,27 @@ namespace DriverHire.Services.Mapping
                     VehicleType=dTO.VehicleType,
                     Rate=dTO.Rate,
                     Shift=dTO.Shift
-    };
-        
+            };
+        public static Booking ToEntity(this ClientBookingDto dto)
+           => dto is null
+               ? null
+               : new Booking
+               {
+                   DestinationFromCoordinate = dto.DestinationFromCoordinate,
+                   DestinationFrom = dto.DestinationFrom,
+                   DestinationToCoordinate = dto.DestinationToCoordinate,
+                   DestinationTo = dto.DestinationTo,
+                   DateTime = dto.DateTime,
+                   VehicleType = dto.VehicleType,
+                   Brand = dto.Brand,
+                   Duration = dto.Duration,
+                   Shift = dto.Shift,
+                   PickUpLocationCordinate=dto.PickUpLocationCoordinate,
+                   PickUpLocation = dto.PickUpLocation,
+                   Message = dto.Message
+               };
+
+
+
     }
 }

@@ -4,11 +4,13 @@ using DriverHire.Entity.Enums;
 using DriverHire.Repository;
 using DriverHire.Repository.Interfaces;
 using DriverHire.Services.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace DriverHire.Services.Services
@@ -20,7 +22,6 @@ namespace DriverHire.Services.Services
         Task<(Authtoken, UserSignInResult)> CheckLogin(LoginDto dto);
         public Task<IEnumerable<UserDetailsDto>> Get(int? id);
         public Task<ApplicationUser> GetLoggedInUser();
-
     }
 
     public class UserRegistrationServices : IUserRegistrationServices
@@ -30,18 +31,21 @@ namespace DriverHire.Services.Services
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IRegisterRepository _registerRepository;
         private readonly JwtGenerator _jwtGenerator;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public UserRegistrationServices(IUnitofWork unitofWork,
                                         IUserRegistrationRepository userRegistrationRepository,
                                         UserManager<IdentityUser> userManager,
                                         IRegisterRepository registerRepository,
-                                        JwtGenerator jwtGenerator)
+                                        JwtGenerator jwtGenerator,
+                                        IHttpContextAccessor httpContextAccessor)
         {
             _unitofWork = unitofWork;
             _UserRegistrationRepository = userRegistrationRepository;
             _userManager = userManager;
             _registerRepository = registerRepository;
             _jwtGenerator = jwtGenerator;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<UserRegistrationDto> Save(UserRegistrationDto dto)
@@ -87,16 +91,21 @@ namespace DriverHire.Services.Services
         {
             var user = await _userManager.FindByNameAsync(dto.Email);
             var isLoginValid = await _userManager.CheckPasswordAsync(user, dto.Password);
-
+            var applicationUser = (await _UserRegistrationRepository.SelectWhere(x => x.UserId == user.Id)).FirstOrDefault();
             if (!isLoginValid)
                 return (null, UserSignInResult.LoginInvalid);
-            // var applicationUser = (await _UserRegistrationRepository.SelectWhere(a => a.UserId == user.Id)).FirstOrDefault();
-            var token = isLoginValid ? await _jwtGenerator.GenerateJwtTokenAsync(user) : string.Empty;
+            var token = await _jwtGenerator.GenerateJwtTokenAsync(user);
             // await SaveTokens(applicationUser, null);
+            applicationUser.IsActive = true;
+             _UserRegistrationRepository.Update(applicationUser);
+            await _unitofWork.SaveAsync();
             return (new Authtoken
             {
-                AccessToken = token,
-                RefreshToken = null
+                AccessToken = token.token,
+                RefreshToken = null,
+                IsCustomer = applicationUser.IsCustomer,
+                UserName = user.UserName,
+                Role = token.role
             }, UserSignInResult.Success);
         }
 
@@ -119,13 +128,16 @@ namespace DriverHire.Services.Services
                 UserName = x.UserName,
                 Email = x.Email,
                 PhoneNumber = x.PhoneNumber
-            }).Where(r=>!id.HasValue || r.Id==id) ;
+            }).Where(r => !id.HasValue || r.Id == id);
             return result;
         }
 
-        public Task<ApplicationUser> GetLoggedInUser()
+        public async Task<ApplicationUser> GetLoggedInUser()
         {
-            throw new NotImplementedException();
+            var applicationUser = (await _UserRegistrationRepository.SelectWhere(u => u.UserId == _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier))).FirstOrDefault();
+            if (applicationUser is null)
+                return null;
+            return applicationUser;
         }
     }
 }

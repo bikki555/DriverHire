@@ -24,7 +24,7 @@ namespace DriverHire.Services.Infrastructure
             _configuration = configuration;
             _context = context;
         }
-        public async Task<string> GenerateJwtTokenAsync(IdentityUser identityUser)
+        public async Task<(string token,string role)> GenerateJwtTokenAsync(IdentityUser identityUser)
         {
             var roleName = (await (from user in _context.Users
                                   join userRole in _context.UserRoles
@@ -39,6 +39,7 @@ namespace DriverHire.Services.Infrastructure
             var authClaims = new List<Claim>
                 {
                     new Claim("ApplicationUserId", $"{applicationUser?.Id??0}"),
+                    new Claim("IsCustomer",$"{applicationUser?.IsCustomer}"),
                     new Claim(ClaimTypes.NameIdentifier, identityUser.Id),
                     new Claim("LoginName", identityUser.UserName),
                     new Claim("UserRole",roleName??""),
@@ -53,7 +54,7 @@ namespace DriverHire.Services.Infrastructure
                 );
 
             var issuedToken = new JwtSecurityTokenHandler().WriteToken(token);
-            return issuedToken;
+            return (issuedToken,roleName);
         }
     }
 }
