@@ -120,7 +120,7 @@ namespace DriverHire.Services.Services
 
         public async Task<IEnumerable<UserDetailsDto>> Get(int? id)
         {
-            var userDetails = _userManager.Users;
+            var userDetails = _userManager.Users.ToList();
             var applicationUsers = await _UserRegistrationRepository.GetAll();
             var result = userDetails.Select(x => new UserDetailsDto
             {

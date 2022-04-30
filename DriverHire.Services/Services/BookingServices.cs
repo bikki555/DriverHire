@@ -17,6 +17,7 @@ namespace DriverHire.Services.Services
         public Task<int> Save(ClientBookingDto dto);
         public Task<BookingDetailsDto> BookingDetails(int bookingId);
         public Task<IEnumerable<BookingHistoryDetailDto>> BookingHistoryDetails();
+        public Task<int> BookingAcceptDriver(int bookingId);
         public class BookingServices : IBookingServices
         {
             private readonly IUnitofWork _unitofWork;
@@ -29,9 +30,55 @@ namespace DriverHire.Services.Services
                 _bookingRepository = bookingRepository;
                 _userregistrationServices = userRegistrationServices;
             }
-            public Task<BookingDetailsDto> BookingDetails(int bookingId)
+
+            public async Task<int> BookingAcceptDriver(int bookingId)
             {
-                throw new NotImplementedException();
+                try
+                {
+                    var booking = await _bookingRepository.GetById(bookingId);
+                    booking.IsBooked = true;
+                    booking.BookingAcceptedDate = DateTime.Now;
+                    booking.DriverId = (await _userregistrationServices.GetLoggedInUser()).Id;
+                    _bookingRepository.Update(booking);
+                    await _unitofWork.SaveAsync();
+                    return bookingId;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+
+            public async Task<BookingDetailsDto> BookingDetails(int bookingId)
+            {
+                var includes = new[]
+               {
+                   nameof(Booking.Customer),
+                   nameof(Booking.Driver),
+                };
+                var applicationUser = await _userregistrationServices.Get(null);
+                var booking = (await _bookingRepository.SelectWhereInclude(includes, x =>x.Id==bookingId
+                ))
+                    .Select(x => new BookingDetailsDto
+                    {
+                        BookingDate = x.DateTime,
+                        DestinationFromCoordinate=x.DestinationFromCoordinate,
+                        DestinationFrom = x.DestinationFrom,
+                        DestinationToCoordinate=x.DestinationToCoordinate,
+                        DestinationTo = x.DestinationTo,
+                        VehicleType=x.VehicleType,
+                        Brand=x.Brand,
+                        Duration=x.Duration,
+                        Shift=x.Shift,
+                        TotalCharge = x.TotalCharge,
+                        PickUpLocationCoordinate=x.PickUpLocationCordinate,
+                        PickUpLocation=x.PickUpLocation,
+                        CustomerName = applicationUser.Where(au => au.Id == x.CustomerId).FirstOrDefault().UserName,
+                        CustomerPhoneNumber= applicationUser.Where(au => au.Id == x.CustomerId).FirstOrDefault().PhoneNumber,
+                        DriverName = applicationUser.Where(au => au.Id == x.DriverId).FirstOrDefault().UserName,
+                        DriverPhoneNumber = applicationUser.Where(au => au.Id == x.DriverId).FirstOrDefault().PhoneNumber
+                    }).FirstOrDefault();
+                return booking;
             }
             public async Task<IEnumerable<BookingHistoryDetailDto>> BookingHistoryDetails()
             {

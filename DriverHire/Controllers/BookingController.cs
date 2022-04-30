@@ -28,10 +28,22 @@ namespace DriverHire.Api.Controllers
             var result = await _bookingServices.Save(dto);
             return Ok(result);
         }
+        [HttpGet]
+        public async Task<IActionResult> Get(int bookingId)
+        {
+            var result = await _bookingServices.BookingDetails(bookingId);
+            return Ok(result);
+        }
         [HttpGet("[action]")]
         public async Task<IActionResult> History()
         {
             var result = await _bookingServices.BookingHistoryDetails();
+            return Ok(result);
+        }
+        [HttpGet("[action]")]
+        public async Task<IActionResult> DriverAccept(int bookingId)
+        {
+            var result = await _bookingServices.BookingAcceptDriver(bookingId);
             return Ok(result);
         }
 
