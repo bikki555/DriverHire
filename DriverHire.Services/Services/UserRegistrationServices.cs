@@ -117,7 +117,6 @@ namespace DriverHire.Services.Services
             _UserRegistrationRepository.Update(user);
             await _unitofWork.SaveAsync();
         }
-
         public async Task<IEnumerable<UserDetailsDto>> Get(int? id)
         {
             var userDetails = _userManager.Users.ToList();

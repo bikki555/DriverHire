@@ -13,7 +13,7 @@ namespace DriverHire.Entity.Entity
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public string VehicleType { get; set; }
+        public VehicleType VehicleType { get; set; }
         public double Rate { get; set; }
         public string LicensePhoto { get; set; }
         public string CitizenPhoto { get; set; }

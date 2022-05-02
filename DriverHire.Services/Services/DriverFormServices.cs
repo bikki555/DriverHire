@@ -14,6 +14,7 @@ namespace DriverHire.Services.Services
     public interface IDriverFormServices
     {
         public Task<DriverFormPostDto> Save(DriverFormPostDto Dto);
+        public Task<IEnumerable<DriverDetailDto>> Get(int? driverId);
         Task<IEnumerable<DriverRecommendationDto>> Recommendation(int bookingId);
     }
     public class DriverFormServices : IDriverFormServices
@@ -24,7 +25,7 @@ namespace DriverHire.Services.Services
         private readonly IBookingRepository _bookingRepository;
         private readonly IUserRegistrationServices _userRegistrationServices;
 
-        public DriverFormServices(IUnitofWork unitofWork, IDriverFormRepository DriverFormRepository, IImageProcessingServices imageProcessingServices, IBookingRepository bookingRepository,IUserRegistrationServices userRegistrationServices)
+        public DriverFormServices(IUnitofWork unitofWork, IDriverFormRepository DriverFormRepository, IImageProcessingServices imageProcessingServices, IBookingRepository bookingRepository, IUserRegistrationServices userRegistrationServices)
         {
             _unitofWork = unitofWork;
             _DriverFormRepository = DriverFormRepository;
@@ -32,6 +33,26 @@ namespace DriverHire.Services.Services
             _bookingRepository = bookingRepository;
             _userRegistrationServices = userRegistrationServices;
         }
+
+        public async Task<IEnumerable<DriverDetailDto>> Get(int? driverId)
+        {
+            var driverData = (await _DriverFormRepository.SelectWhere(x => !driverId.HasValue
+            ||
+            x.UserId == driverId
+            )).Select(x => new DriverDetailDto
+            {
+                Name = x.Name,
+                DateOfBirth = x.DateOfBirth,
+                VehicleType = x.VehicleType,
+                Rate = x.Rate.ToString(),
+                LicensePhotoFile = x.LicensePhoto,
+                CitizenPhotoFile = x.CitizenPhoto,
+                Shift = x.Shift
+            });
+            return driverData;
+
+        }
+
         public async Task<IEnumerable<DriverRecommendationDto>> Recommendation(int bookingId)
         {
             var includes = new[]
@@ -43,7 +64,7 @@ namespace DriverHire.Services.Services
             return (await _DriverFormRepository.SelectWhereInclude(includes)).Select(x => new DriverRecommendationDto
             {
                 DriverName = x.Name,
-                ContactNo= applicationUser.Where(a=>a.Id==x.UserId).FirstOrDefault().PhoneNumber,
+                ContactNo = applicationUser.Where(a => a.Id == x.UserId).FirstOrDefault().PhoneNumber,
                 Price = Convert.ToDecimal(x.Rate) * booking.Duration
             });
         }

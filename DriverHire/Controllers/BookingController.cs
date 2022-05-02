@@ -35,9 +35,9 @@ namespace DriverHire.Api.Controllers
             return Ok(result);
         }
         [HttpGet("[action]")]
-        public async Task<IActionResult> History()
+        public async Task<IActionResult> History(int?userId)
         {
-            var result = await _bookingServices.BookingHistoryDetails();
+            var result = await _bookingServices.BookingHistoryDetails(userId);
             return Ok(result);
         }
         [HttpGet("[action]")]

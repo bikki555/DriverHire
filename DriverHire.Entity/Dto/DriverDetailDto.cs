@@ -1,20 +1,20 @@
 ﻿using DriverHire.Entity.Enums;
-using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace DriverHire.Entity.Dto
 {
-    public class DriverFormPostDto
+    public class DriverDetailDto
     {
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
         public VehicleType VehicleType { get; set; }
         public string Rate { get; set; }
-        public IFormFile LicensePhotoFile { get; set; }
-        public IFormFile CitizenPhotoFile { get; set; }
+        public string LicensePhotoFile { get; set; }
+        public string CitizenPhotoFile { get; set; }
         public Shift Shift { get; set; }
     }
 }

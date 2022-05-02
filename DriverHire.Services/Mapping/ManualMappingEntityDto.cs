@@ -18,7 +18,7 @@ namespace DriverHire.Services.Mapping
                     Name=dTO.Name,
                     DateOfBirth=dTO.DateOfBirth,
                     VehicleType=dTO.VehicleType,
-                    Rate=dTO.Rate,
+                    Rate=Convert.ToDouble(dTO.Rate),
                     Shift=dTO.Shift
             };
         public static Booking ToEntity(this ClientBookingDto dto)

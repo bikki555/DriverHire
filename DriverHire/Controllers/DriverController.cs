@@ -33,13 +33,17 @@ namespace DriverHire.Api.Controllers
 
         }
         [HttpGet]
+        public async Task<IActionResult> Get(int? driverId)
+        {
+            var result = await _DriverFormServices.Get(driverId);
+            return Ok(!driverId.HasValue?result:result.FirstOrDefault());
+        }
+        [HttpGet]
         [Route("Recommendation")]
         public async Task<IActionResult> Recommendation(int bookingId)
         {
             var result = await _DriverFormServices.Recommendation(bookingId);
             return Ok(result);
-
-
         }
     }
 }

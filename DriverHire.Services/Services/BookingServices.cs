@@ -16,7 +16,7 @@ namespace DriverHire.Services.Services
     {
         public Task<int> Save(ClientBookingDto dto);
         public Task<BookingDetailsDto> BookingDetails(int bookingId);
-        public Task<IEnumerable<BookingHistoryDetailDto>> BookingHistoryDetails();
+        public Task<IEnumerable<BookingHistoryDetailDto>> BookingHistoryDetails(int? userId);
         public Task<int> BookingAcceptDriver(int bookingId);
         public class BookingServices : IBookingServices
         {
@@ -80,16 +80,22 @@ namespace DriverHire.Services.Services
                     }).FirstOrDefault();
                 return booking;
             }
-            public async Task<IEnumerable<BookingHistoryDetailDto>> BookingHistoryDetails()
+            public async Task<IEnumerable<BookingHistoryDetailDto>> BookingHistoryDetails(int? userId)
             {
                 var includes = new[]
                 {
                    nameof(Booking.Customer),
                    nameof(Booking.Driver),
                 };
-                var loggedUser = (await _userregistrationServices.GetLoggedInUser());
-                var applicationUser = await _userregistrationServices.Get(null);
-                var bookings = (await _bookingRepository.SelectWhereInclude(includes, x => loggedUser.IsCustomer ? x.CustomerId == loggedUser.Id : x.DriverId == loggedUser.Id
+                //var loggedUser = (await _userregistrationServices.GetLoggedInUser());
+                var applicationUser = await _userregistrationServices.Get(userId);
+                var bookings = (await _bookingRepository.SelectWhereInclude(includes, x => (!userId.HasValue
+                || 
+                ((applicationUser.FirstOrDefault().IsCustomer==true && x.CustomerId==userId)
+                ||
+                (applicationUser.FirstOrDefault().IsCustomer == false &&  x.DriverId == userId))
+                )
+                
                 && x.IsBooked
                 ))
                     .Select(x => new BookingHistoryDetailDto

@@ -1,6 +1,7 @@
 ﻿using DriverHire.Entity.Dto;
 using DriverHire.Entity.Enums;
 using DriverHire.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,13 @@ namespace DriverHire.Api.Controllers
             return Ok(result);
           
 
+        }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Get(int?id)
+        {
+            var result = await _userRegistrationServices.Get(id);
+            return Ok(result);
         }
 
 
