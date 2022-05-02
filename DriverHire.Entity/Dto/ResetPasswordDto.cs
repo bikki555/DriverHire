@@ -11,8 +11,6 @@ namespace DriverHire.Entity.Dto
     public class ResetPasswordDto
     {
         public string Otp { get; set; }
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
-        public string Email { get; set; }
         public string Password { get; set; }
         [Required]
         [DisplayName("Confirm Password")]

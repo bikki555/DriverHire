@@ -78,7 +78,7 @@ namespace DriverHire.Services.Services
         public async Task<ModelStateDictionary> Validation(UserRegistrationDto dto)
         {
             ModelStateDictionary modelState = new ModelStateDictionary();
-            var register = (await _registerRepository.SelectWhere(x => x.Email == dto.Email)).OrderByDescending(x => x.OtpExpiryDate).FirstOrDefault();
+            var register = (await _registerRepository.SelectWhere(x => x.Email == dto.Email && !x.IsReset==true)).OrderByDescending(x => x.OtpExpiryDate).FirstOrDefault();
             if (string.Equals(register.Otp, dto.Otp))
             {
                 if (register.OtpExpiryDate < DateTime.Now)

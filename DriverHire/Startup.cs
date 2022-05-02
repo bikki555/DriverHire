@@ -84,8 +84,8 @@ namespace DriverHire
                 app.UseDeveloperExceptionPage();
             }
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DriverHire v1"));
-           // app.UseSwaggerUI(c => c.SwaggerEndpoint("https://bsite.net/driverhiring/swagger/v1/swagger.json", "DriverHire v1"));
+            //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DriverHire v1"));
+           app.UseSwaggerUI(c => c.SwaggerEndpoint("https://bsite.net/driverhiring/swagger/v1/swagger.json", "DriverHire v1"));
 
             //app.UseStaticFiles(new StaticFileOptions
             //{
