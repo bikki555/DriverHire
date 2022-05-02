@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace DriverHire.Services.Services
         Task<(Authtoken, UserSignInResult)> CheckLogin(LoginDto dto);
         public Task<IEnumerable<UserDetailsDto>> Get(int? id);
         public Task<ApplicationUser> GetLoggedInUser();
+        public Task<ExpandoObject> ResetPassword(ResetPasswordDto dto);
     }
 
     public class UserRegistrationServices : IUserRegistrationServices
@@ -97,7 +99,7 @@ namespace DriverHire.Services.Services
             var token = await _jwtGenerator.GenerateJwtTokenAsync(user);
             // await SaveTokens(applicationUser, null);
             applicationUser.IsActive = true;
-             _UserRegistrationRepository.Update(applicationUser);
+            _UserRegistrationRepository.Update(applicationUser);
             await _unitofWork.SaveAsync();
             return (new Authtoken
             {
@@ -137,6 +139,31 @@ namespace DriverHire.Services.Services
             if (applicationUser is null)
                 return null;
             return applicationUser;
+        }
+        public async Task<ExpandoObject> ResetPassword(ResetPasswordDto dto)
+        {
+            dynamic obj = new ExpandoObject();
+            var modelState = new ModelStateDictionary();
+            var email = (await _registerRepository.SelectWhere(x => x.Otp == dto.Otp && x.IsReset == true)).FirstOrDefault()?.Email;
+            if (email is null)
+                //otp doesnot match//
+                modelState.AddModelError("", "Otp does not match");
+            else
+            {
+                var applicationUser = await _userManager.FindByNameAsync(email);
+                if (applicationUser == null)
+                {
+                    modelState.AddModelError("", $"No user exist having email {email}");
+                }
+                var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(applicationUser);
+                var changePasword = await _userManager.ResetPasswordAsync(applicationUser, resetPasswordToken, dto.Password);
+                if (changePasword.Succeeded)
+                    obj.Data = true;
+                else
+                    modelState.AddModelError("","Erro while Resetting Password");
+            }
+            obj.ModelState = modelState;
+            return obj;
         }
     }
 }

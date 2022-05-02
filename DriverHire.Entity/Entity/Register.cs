@@ -13,5 +13,6 @@ namespace DriverHire.Entity
         public string Email { get; set; }
         public string Otp { get; set; }
         public DateTime OtpExpiryDate { get; set; }
+        public bool? IsReset { get; set; }
     }
 }

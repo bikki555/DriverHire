@@ -14,6 +14,7 @@ namespace DriverHire.Services
     public interface IRegisterServices
     {
         public Task<bool> Register(RegisterDto dto);
+        public Task<bool> ForgetPassword(RegisterDto email);
     }
     public class RegisterServices : IRegisterServices
     {
@@ -29,6 +30,48 @@ namespace DriverHire.Services
             _emailServices = emailServices;
             _otpGenerator = otpGenerator;
         }
+        public async Task<bool> ForgetPassword(RegisterDto dto)
+        {
+            try
+            {
+                //sending email//
+                var to = dto.Email;
+                var otp = _otpGenerator.GetRandomNumber(4);
+                var otpExiryDate = DateTime.Now.AddMinutes(10);//manually adding 10 min for otp expiry
+
+                //this can be store in email template in table//
+                var subject = "Password Reset Otp";
+                var message = "</p><p> Use the following Otp to Reset Password </p>" +
+                    $"<p> Otp:{otp}</p>" +
+                    $"<p> Opt ExpiryDate: {otpExiryDate}</p>" +
+                    "<p> &nbsp;</p><p> &nbsp;</p>" +
+                    "<p> Regards,</p><p> Driver Hire </p> ";
+                //
+                var email = await _emailServices.SendEmail(to, subject, message);
+                if (email)
+                {
+                    var entity = new Register
+                    {
+                        Email = dto.Email,
+                        Otp = otp,
+                        OtpExpiryDate = otpExiryDate,
+                        IsReset = true,
+                    };
+                    await _registerRepository.Insert(entity);
+                    await _unitofWork.SaveAsync();
+                    return true;
+                }
+                else
+                    return false;
+            }
+
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+        }
+
         public async Task<bool> Register(RegisterDto dto)
         {
 

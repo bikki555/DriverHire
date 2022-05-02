@@ -57,5 +57,15 @@ namespace DriverHire.Api.Controllers
             }
             return BadRequest(ModelState);
         }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordDto dto)
+        {
+            dynamic obj = await _userRegistrationServices.ResetPassword(dto);
+            ModelState.Merge(obj.ModelState);
+            if (ModelState.IsValid)
+                return Ok(obj.Data);
+            else
+                return BadRequest(obj.ModelState);
+        }
     }
 }

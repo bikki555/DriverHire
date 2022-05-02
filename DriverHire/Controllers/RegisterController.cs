@@ -32,5 +32,16 @@ namespace DriverHire.Api.Controllers
 
 
         }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> ResetOtp(RegisterDto dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var result = await _registerServices.ForgetPassword(dto);
+            if (result)
+                return Ok();
+            else
+                return BadRequest("Error Occured!");
+        }
     }
 }
