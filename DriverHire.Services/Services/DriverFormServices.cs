@@ -64,7 +64,7 @@ namespace DriverHire.Services.Services
             return (await _DriverFormRepository.SelectWhereInclude(includes)).Select(x => new DriverRecommendationDto
             {
                 DriverName = x.Name,
-                ContactNo = applicationUser.Where(a => a.Id == x.UserId).FirstOrDefault().PhoneNumber,
+                ContactNo = applicationUser.Where(a => a.Id == x.UserId)?.FirstOrDefault()?.PhoneNumber,
                 Price = Convert.ToDecimal(x.Rate) * booking.Duration
             });
         }
