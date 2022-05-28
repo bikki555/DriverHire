@@ -87,7 +87,12 @@ namespace DriverHire.Services.Services
                    nameof(Booking.Customer),
                    nameof(Booking.Driver),
                 };
-                //var loggedUser = (await _userregistrationServices.GetLoggedInUser());
+
+                if (userId is null)
+                {
+                    var loggedUser = (await _userregistrationServices.GetLoggedInUser());
+                    userId = loggedUser.Id;
+                }
                 var applicationUser = await _userregistrationServices.Get(userId);
                 var bookings = (await _bookingRepository.SelectWhereInclude(includes, x => (!userId.HasValue
                 || 

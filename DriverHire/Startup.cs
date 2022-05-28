@@ -37,41 +37,65 @@ namespace DriverHire
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DriverHire", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\"",
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                 {
+                     {
+                           new OpenApiSecurityScheme
+                             {
+                                 Reference = new OpenApiReference
+                                 {
+                                     Type = ReferenceType.SecurityScheme,
+                                     Id = "Bearer"
+                                 }
+                             },
+                             new string[] {}
+                     }
+                 });
+
             });
             //Dependency Injection
             services.AddScoped<IUnitofWork, UnitofWork>();
             //adding services di //
             services.AddServicesDI().AddRepositorysDI().AddAuthenticationDI();
             services.AddIdentity<IdentityUser, ApplicationRole>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.User.RequireUniqueEmail = false;
-            }).AddEntityFrameworkStores<DriverHireContext>().AddDefaultTokenProviders();
+                {
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.User.RequireUniqueEmail = false;
+                }).AddEntityFrameworkStores<DriverHireContext>().AddDefaultTokenProviders();
 
             services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
-            {
-                options.IncludeErrorDetails = false;
-                options.SaveToken = true;
-                options.RequireHttpsMetadata = false;
-                options.TokenValidationParameters = new TokenValidationParameters()
-                {
-                    ClockSkew = TimeSpan.Zero,
-                    ValidateIssuer = true,
-                    ValidIssuer = Configuration["JWT:Issuer"],
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"])),
-                    ValidateLifetime = true,
-                    ValidateAudience = false,
-                };
-            });
+                    {
+                        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                    })
+                    .AddJwtBearer(options =>
+                    {
+                        options.IncludeErrorDetails = false;
+                        options.SaveToken = true;
+                        options.RequireHttpsMetadata = false;
+                        options.TokenValidationParameters = new TokenValidationParameters()
+                        {
+                            ClockSkew = TimeSpan.Zero,
+                            ValidateIssuer = true,
+                            ValidIssuer = Configuration["JWT:Issuer"],
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"])),
+                            ValidateLifetime = true,
+                            ValidateAudience = false,
+                        };
+                    });
 
 
         }
@@ -86,7 +110,6 @@ namespace DriverHire
             app.UseSwagger();
             //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DriverHire v1"));
             app.UseSwaggerUI(c => c.SwaggerEndpoint("https://bsite.net/driverhiringv1/swagger/v1/swagger.json", "DriverHire v1"));
-            //app.UseSwaggerUI(c => c.SwaggerEndpoint("http://ashish1299-001-site1.ftempurl.com/swagger/v1/swagger.json", "DriverHire v1"));
 
             //app.UseStaticFiles(new StaticFileOptions
             //{
