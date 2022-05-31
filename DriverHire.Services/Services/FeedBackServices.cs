@@ -54,7 +54,8 @@ namespace DriverHire.Services.Services
             var entity = new FeedBack
             {
                 DRating = dto.Ratings,
-                DFeedBackMessage = dto.FeedBackMessage
+                DFeedBackMessage = dto.FeedBackMessage,
+                BookingId=dto.BookingId
             };
             try
             {

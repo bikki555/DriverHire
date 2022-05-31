@@ -10,5 +10,6 @@ namespace DriverHire.Entity.Dto
     {
         public int Ratings { get; set; }
         public string FeedBackMessage { get; set; }
-    }
+        public int BookingId { get; set; }
+}
 }

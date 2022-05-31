@@ -24,6 +24,7 @@ namespace DriverHire.Api.Infrastructure
             services.AddScoped<IDriverFormServices, DriverFormServices>();
             services.AddScoped<IRegisterServices, RegisterServices>();
             services.AddScoped<IUserRegistrationServices, UserRegistrationServices>();
+            services.AddScoped<IFeedBackServices, FeedBackServices>();
 
             return services;
         }
@@ -34,6 +35,7 @@ namespace DriverHire.Api.Infrastructure
             services.AddScoped<IDriverFormRepository, DriverFormRepository>();
             services.AddScoped<IRegisterRepository, RegisterRepository>();
             services.AddScoped<IUserRegistrationRepository, UserRegistrationRepository>();
+            services.AddScoped<IFeedBackRepository, FeedBackRepository>();
 
             return services;
         }
