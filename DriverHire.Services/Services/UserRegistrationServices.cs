@@ -150,17 +150,20 @@ namespace DriverHire.Services.Services
                 modelState.AddModelError("", "Otp does not match");
             else
             {
-                var applicationUser = await _userManager.FindByNameAsync(email);
+                var applicationUser = await _userManager.FindByEmailAsync(email.ToUpperInvariant().Trim());
                 if (applicationUser == null)
                 {
                     modelState.AddModelError("", $"No user exist having email {email}");
                 }
-                var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(applicationUser);
-                var changePasword = await _userManager.ResetPasswordAsync(applicationUser, resetPasswordToken, dto.Password);
-                if (changePasword.Succeeded)
-                    obj.Data = true;
                 else
-                    modelState.AddModelError("","Erro while Resetting Password");
+                {
+                    var resetPasswordToken = await _userManager.GeneratePasswordResetTokenAsync(applicationUser);
+                    var changePasword = await _userManager.ResetPasswordAsync(applicationUser, resetPasswordToken, dto.Password);
+                    if (changePasword.Succeeded)
+                        obj.Data = true;
+                    else
+                        modelState.AddModelError("", "Error while Resetting Password");
+                }
             }
             obj.ModelState = modelState;
             return obj;

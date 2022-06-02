@@ -38,7 +38,7 @@ namespace DriverHire.Services.Services
         {
             var driverData = (await _DriverFormRepository.SelectWhere(x => !driverId.HasValue
             ||
-            x.UserId == driverId
+            x.Id == driverId
             )).Select(x => new DriverDetailDto
             {
                 Name = x.Name,
@@ -63,6 +63,7 @@ namespace DriverHire.Services.Services
             var applicationUser = await _userRegistrationServices.Get(null);
             return (await _DriverFormRepository.SelectWhereInclude(includes)).Select(x => new DriverRecommendationDto
             {
+                DriverId=x.Id,
                 DriverName = x.Name,
                 ContactNo = applicationUser.Where(a => a.Id == x.UserId)?.FirstOrDefault()?.PhoneNumber,
                 Price = Convert.ToDecimal(x.Rate) * booking.Duration
