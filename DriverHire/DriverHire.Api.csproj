@@ -5,12 +5,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Contents\**" />
+    <Compile Remove="Controllers\Contents\**" />
+    <Compile Remove="Controllers\Content\**" />
+    <Content Remove="Contents\**" />
+    <Content Remove="Controllers\Contents\**" />
+    <Content Remove="Controllers\Content\**" />
+    <EmbeddedResource Remove="Contents\**" />
+    <EmbeddedResource Remove="Controllers\Contents\**" />
+    <EmbeddedResource Remove="Controllers\Content\**" />
+    <None Remove="Contents\**" />
+    <None Remove="Controllers\Contents\**" />
+    <None Remove="Controllers\Content\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DriverHire.Data\DriverHire.Data.csproj" />
     <ProjectReference Include="..\DriverHire.Services\DriverHire.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Content\images\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 

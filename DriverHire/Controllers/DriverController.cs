@@ -12,7 +12,7 @@ namespace DriverHire.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
 
     public class DriverController : Controller
     {
@@ -29,7 +29,14 @@ namespace DriverHire.Api.Controllers
                 return BadRequest(ModelState);
             var result = await _DriverFormServices.Save(dto);
             return Ok(result);
-
+        }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> Add([FromForm]DriverFormPostDto dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var result = await _DriverFormServices.Save(dto);
+            return Ok(result);
 
         }
         [HttpGet]
