@@ -25,7 +25,6 @@ namespace DriverHire.Api.Infrastructure
             services.AddScoped<IRegisterServices, RegisterServices>();
             services.AddScoped<IUserRegistrationServices, UserRegistrationServices>();
             services.AddScoped<IFeedBackServices, FeedBackServices>();
-
             services.AddScoped<IPushNotificationGenerator, PushNotificationGenerator>();
             return services;
         }

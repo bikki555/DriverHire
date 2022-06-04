@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0dDUeK/6T3KWQNH4eyBNFLAKBBcPayQdcX2VOB95+bi7jlPiU2QxdXs1YqlR1VGljyC7ZWfOZ/guflstcvxTNg==",
+  "dgSpecHash": "7NVvLiG89z7GYRHjbD+ndHZWtaC6IIqI6hBegjQetScGrTOZjZGKYXyP08aTSOWmjGPwphT+o6bbOobvOtyDWA==",
   "success": true,
   "projectFilePath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire\\DriverHire.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\bikash\\.nuget\\packages\\corepush\\3.0.11\\corepush.3.0.11.nupkg.sha512",
     "C:\\Users\\bikash\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\bikash\\.nuget\\packages\\magick.net-q16-anycpu\\11.1.0\\magick.net-q16-anycpu.11.1.0.nupkg.sha512",
     "C:\\Users\\bikash\\.nuget\\packages\\magick.net.core\\11.1.0\\magick.net.core.11.1.0.nupkg.sha512",
@@ -50,6 +51,8 @@
     "C:\\Users\\bikash\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\bikash\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\bikash\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\bikash\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\bikash\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\bikash\\.nuget\\packages\\swashbuckle.aspnetcore\\6.3.1\\swashbuckle.aspnetcore.6.3.1.nupkg.sha512",
     "C:\\Users\\bikash\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.3.1\\swashbuckle.aspnetcore.swagger.6.3.1.nupkg.sha512",
