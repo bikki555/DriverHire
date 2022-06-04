@@ -12,7 +12,7 @@ namespace DriverHire.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
 
     public class DriverController : Controller
     {
