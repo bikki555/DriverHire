@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj": {}
+    "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj": {}
   },
   "projects": {
-    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj": {
+    "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj",
+        "projectUniqueName": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj",
         "projectName": "DriverHire.Data",
-        "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj",
-        "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\obj\\",
+        "projectPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj",
+        "packagesPath": "C:\\Users\\bikash\\.nuget\\packages\\",
+        "outputPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bikash\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,15 +25,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.telerik.com/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
-                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
+              "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
+                "projectPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
               }
             }
           }
@@ -71,21 +73,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
+    "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
+        "projectUniqueName": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
         "projectName": "DriverHire.Entity",
-        "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
-        "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\obj\\",
+        "projectPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj",
+        "packagesPath": "C:\\Users\\bikash\\.nuget\\packages\\",
+        "outputPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Entity\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bikash\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,8 +98,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.telerik.com/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -136,21 +140,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj": {
+    "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj",
+        "projectUniqueName": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj",
         "projectName": "DriverHire.Repository",
-        "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj",
-        "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\obj\\",
+        "projectPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj",
+        "packagesPath": "C:\\Users\\bikash\\.nuget\\packages\\",
+        "outputPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Repository\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bikash\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -158,18 +165,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.telerik.com/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj": {
-                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj"
+              "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj": {
+                "projectPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Data\\DriverHire.Data.csproj"
               },
-              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
-                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
+              "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
+                "projectPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
               }
             }
           }
@@ -204,21 +210,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj": {
+    "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
+        "projectUniqueName": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
         "projectName": "DriverHire.Services",
-        "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
-        "packagesPath": "C:\\Users\\BIKKI\\.nuget\\packages\\",
-        "outputPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Services\\obj\\",
+        "projectPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Services\\DriverHire.Services.csproj",
+        "packagesPath": "C:\\Users\\bikash\\.nuget\\packages\\",
+        "outputPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Services\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\BIKKI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bikash\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -226,18 +235,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.telerik.com/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
-                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
+              "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj": {
+                "projectPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Entity\\DriverHire.Entity.csproj"
               },
-              "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj": {
-                "projectPath": "F:\\Projects\\HireDriver\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj"
+              "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj": {
+                "projectPath": "D:\\MyPersonalFiles\\Project\\DriverHire\\DriverHire.Repository\\DriverHire.Repository.csproj"
               }
             }
           }
@@ -288,7 +296,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
