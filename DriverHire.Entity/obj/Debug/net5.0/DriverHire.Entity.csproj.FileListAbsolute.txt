@@ -34,3 +34,15 @@ C:\Users\ashis\Driverhiring\DriverHire\DriverHire.Entity\obj\Debug\net5.0\Driver
 C:\Users\ashis\Driverhiring\DriverHire\DriverHire.Entity\obj\Debug\net5.0\DriverHire.Entity.dll
 C:\Users\ashis\Driverhiring\DriverHire\DriverHire.Entity\obj\Debug\net5.0\ref\DriverHire.Entity.dll
 C:\Users\ashis\Driverhiring\DriverHire\DriverHire.Entity\obj\Debug\net5.0\DriverHire.Entity.pdb
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\bin\Debug\net5.0\DriverHire.Entity.deps.json
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\bin\Debug\net5.0\DriverHire.Entity.dll
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\bin\Debug\net5.0\DriverHire.Entity.pdb
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\obj\Debug\net5.0\DriverHire.Entity.csproj.AssemblyReference.cache
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\obj\Debug\net5.0\DriverHire.Entity.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\obj\Debug\net5.0\DriverHire.Entity.AssemblyInfoInputs.cache
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\obj\Debug\net5.0\DriverHire.Entity.AssemblyInfo.cs
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\obj\Debug\net5.0\DriverHire.Entity.csproj.CoreCompileInputs.cache
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\obj\Debug\net5.0\DriverHire.Entity.dll
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\obj\Debug\net5.0\refint\DriverHire.Entity.dll
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\obj\Debug\net5.0\DriverHire.Entity.pdb
+D:\MyPersonalFiles\Project\DriverHire\DriverHire.Entity\obj\Debug\net5.0\ref\DriverHire.Entity.dll
